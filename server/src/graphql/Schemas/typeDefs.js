@@ -3,15 +3,20 @@ const typeDefs = gql`
   type Query {
     cars: [Car!]!
     people: [Person!]!
+    buyer(id: ID!): Person
+  }
+
+  type Mutation {
+    removeBuyer(id: ID!): [Person!]!
   }
   type Person {
-    id: String!
+    id: ID!
     firstName: String!
     lastName: String!
   }
 
   type Car {
-    id: String!
+    id: ID!
     personId: String!
     year: String!
     make: String!

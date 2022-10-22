@@ -1,4 +1,4 @@
-const people = [
+let people = [
   {
     id: '1',
     firstName: 'Bill',
@@ -97,6 +97,20 @@ const resolvers = {
       return cars;
     },
     people: (parent, args, context, info) => {
+      return people;
+    },
+    buyer: (parent, args, context, info) => {
+      return people.find((citizen) => citizen.id === args.id);
+    },
+  },
+  Mutation: {
+    removeBuyer: (parent, args, context, info) => {
+      let buyerToBeRemoved = people.find((citizen) => citizen.id === args.id);
+      for (let i = 0; i < people.length; i++) {
+        if (people[i].id === buyerToBeRemoved.id) {
+          people.splice(i, 1);
+        }
+      }
       return people;
     },
   },
