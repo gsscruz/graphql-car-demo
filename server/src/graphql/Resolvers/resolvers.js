@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 let people = [
   {
     id: '1',
@@ -111,6 +113,17 @@ const resolvers = {
           people.splice(i, 1);
         }
       }
+      return people;
+    },
+    addBuyer: (parent, args, context, info) => {
+      let createdId = uuidv4();
+
+      let createdBuyer = {
+        id: createdId,
+        firstName: args.firstName,
+        lastName: args.lastName,
+      };
+      people.push(createdBuyer);
       return people;
     },
   },

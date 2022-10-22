@@ -8,6 +8,7 @@ const typeDefs = gql`
 
   type Mutation {
     removeBuyer(id: ID!): [Person!]!
+    addBuyer(firstName: String!, lastName: String!): [Person!]!
   }
   type Person {
     id: ID!
