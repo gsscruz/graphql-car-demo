@@ -7,11 +7,9 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    removeBuyer(id: ID!): [Person!]!
-
-    removeCar(id: ID!): [Person!]!
-
     addBuyer(firstName: String!, lastName: String!): [Person!]!
+    removeBuyer(id: ID!): [Person!]!
+    updateBuyer(id: ID!, firstName: String, lastName: String): [Person!]!
 
     addCar(
       personId: String!
@@ -20,9 +18,7 @@ const typeDefs = gql`
       model: String!
       price: String!
     ): [Person!]!
-
-    updateBuyer(id: ID!, firstName: String, lastName: String): [Person!]!
-
+    removeCar(id: ID!): [Person!]!
     updateCar(
       id: ID!
       personId: String!

@@ -191,10 +191,6 @@ const resolvers = {
           .find((peopleArray) => peopleArray.id === personId)
           .carCollection.find((vehicle) => vehicle.id === id);
       };
-      console.log(retrieveBuyersCar());
-
-      console.log(`PersonID  of the car is: ${personId}`);
-      console.log(`ID of the Person is is: ${id}`);
 
       retrieveBuyersCar().year = year;
       retrieveBuyersCar().make = make;
