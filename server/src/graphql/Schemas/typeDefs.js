@@ -14,18 +14,20 @@ const typeDefs = gql`
     addCar(
       personId: String!
       make: String!
-      year: String!
+      year: Int!
       model: String!
-      price: String!
+      price: Float!
     ): [Person!]!
+
     removeCar(id: ID!): [Person!]!
+
     updateCar(
       id: ID!
       personId: String!
-      year: String!
+      year: Int!
       make: String!
       model: String!
-      price: String!
+      price: Float!
     ): [Person!]!
   }
   type Person {
@@ -38,10 +40,10 @@ const typeDefs = gql`
   type Car {
     id: ID!
     personId: String!
-    year: String!
+    year: Int!
     make: String!
     model: String!
-    price: String!
+    price: Float!
   }
 `;
 
