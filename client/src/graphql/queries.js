@@ -65,6 +65,14 @@ export const GET_PEOPLE = gql`
       id
       firstName
       lastName
+      carCollection {
+        id
+        personId
+        year
+        make
+        model
+        price
+      }
     }
   }
 `;

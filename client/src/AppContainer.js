@@ -1,10 +1,9 @@
 import './App.css';
 
-import CarContainer from './components/CarContainer/CarContainer';
-import PeopleContainer from './components/PeopleContainer/PeopleContainer';
-import RecordContainer from './components/RecordContainer/RecordContainer';
-
 import { useQuery } from '@apollo/client';
+import AddPerson from './components/addBuyers/AddPerson';
+import AddCar from './components/addCars/AddCar';
+import Customers from './components/buyersRecord/Customers';
 
 import {
   GET_CARS,
@@ -29,16 +28,18 @@ function AppContainer() {
     error: errorCars,
     data: dataCars,
   } = useQuery(GET_CARS);
-  if (loadingPeople) return <h1>LOADING PEOPLE</h1>;
-  if (loadingCars) return <h1>LOADING CARS</h1>;
 
+  if (loadingPeople) return <h1>LOADING PEOPLE</h1>;
   if (errorPeople) return <h1>ERROR PEOPLE</h1>;
-  if (errorCars) return <h1>ERROR CARS</h1>;
+  // if (loadingCars) return <h1>LOADING CARS</h1>;
+
+  // if (errorCars) return <h1>ERROR CARS</h1>;
   return (
     <div className='App'>
-      <PeopleContainer />
-      <CarContainer />
-      <RecordContainer dataPeople={dataPeople} dataCars={dataCars} />
+      <h1>People and Cars</h1>
+      <AddPerson />
+      <AddCar />
+      <Customers customersData={dataPeople} />
     </div>
   );
 }
