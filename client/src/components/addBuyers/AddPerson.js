@@ -1,6 +1,5 @@
 import { useMutation } from '@apollo/client';
-import React from 'react';
-// import { ADD_BUYER } from '../../graphql/queries';
+import React, { useState } from 'react';
 import { gql } from '@apollo/client';
 
 const ADD_BUYER = gql`
@@ -14,34 +13,47 @@ const ADD_BUYER = gql`
 `;
 const AddPerson = () => {
   const [mutate] = useMutation(ADD_BUYER);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(e.target.firstName.value);
-    console.log(e.target.lastName.value);
+    console.log(firstName);
+    console.log(lastName);
     mutate({
       variables: {
-        firstName: e.target.firstName.value,
-        lastName: e.target.lastName.value,
+        firstName: firstName,
+        lastName: lastName,
       },
       optimisticResponse: {
         addBuyer: {
           id: '1',
           __typename: 'test',
-          firstName: e.target.firstName.value,
-          lastName: e.target.lastName.value,
+          firstName: firstName,
+          lastName: lastName,
         },
       },
     });
+
+    e.target.firstName.value = '';
+    e.target.lastName.value = '';
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <label htmlFor='firstName'>First name</label>
-        <input type='text' id='firstName' />
+        <input
+          type='text'
+          id='firstName'
+          onChange={(e) => setFirstName(e.target.value)}
+        />
         <label htmlFor='lastName'>Last name</label>
-        <input type='text' id='lastName' />
+        <input
+          type='text'
+          id='lastName'
+          onChange={(e) => setLastName(e.target.value)}
+        />
         <button type='submit'> Add Person</button>
       </form>
     </div>
