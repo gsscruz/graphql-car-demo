@@ -1,6 +1,40 @@
 .App {
-  text-align: center;
-  margin: 20px;
-  padding: 20px;
-  border: 5px solid black;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 100px auto;
+  width: 70%;
+}
+
+.App .ant-card-type-inner .ant-card-body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.App .ant-list-item .ant-card-body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.App #add-car-form .ant-select {
+  margin: 8px 0px 0 8px;
+}
+
+.App .ant-select-arrow {
+  top: 25%;
+}
+
+.App #update-car-form .ant-select-arrow {
+  top: 50%;
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
