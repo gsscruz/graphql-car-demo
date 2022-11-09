@@ -11,16 +11,16 @@ const resolvers = {
       return people;
     },
 
-    findPerson: (parent, { id }, context, info) => {
+    filterPeople: (parent, { id }, context, info) => {
       return filter(people, ['id', id]);
     },
-    findCar: (parent, { personId }, context, info) => {
+    filterCars: (parent, { personId }, context, info) => {
       return filter(cars, ['personId', personId]);
     },
   },
   Mutation: {
     //delete person from the list of people based on person.id
-    removeBuyer: (parent, { id }, context, info) => {
+    deletePerson: (parent, { id }, context, info) => {
       const removedBuyer = find(people, { id: id });
 
       if (!removedBuyer) {
@@ -29,7 +29,7 @@ const resolvers = {
       remove(people, { id: id });
       return removedBuyer;
     },
-    removeCar: (parent, { id }, context, info) => {
+    deleteCar: (parent, { id }, context, info) => {
       const carToBeRemoved = find(cars, { id: id });
       if (!carToBeRemoved) {
         throw new Error(`Could not identify any car with id ${id}`);
@@ -38,17 +38,22 @@ const resolvers = {
       return carToBeRemoved;
     },
     //add new person to list of people based on person.id
-    addBuyer: (parent, { id, firstName, lastName }, context, info) => {
+    addPerson: (parent, { id, firstName, lastName }, context, info) => {
       const buyer = {
         id,
         firstName,
         lastName,
       };
       people.push(buyer);
-      return person;
+      return buyer;
     },
     //add car to a person
-    addCar: (parent, { personId, year, make, model, price }, context, info) => {
+    addCar: (
+      parent,
+      { id, personId, year, make, model, price },
+      context,
+      info
+    ) => {
       const carBought = {
         id: id,
         personId: personId,
@@ -63,9 +68,9 @@ const resolvers = {
       return carBought;
     },
     //update Person
-    updateBuyer: (parent, { id, firstName, lastName }, context, info) => {
+    updatePerson: (parent, { id, firstName, lastName }, context, info) => {
       const buyer = find(people, { id: id });
-      if (!person) {
+      if (!buyer) {
         throw new Error(`Could not identify any person with id ${id}`);
       }
       buyer.firstName = firstName;
@@ -90,6 +95,12 @@ const resolvers = {
       carToUpdate().price = price;
 
       return carToUpdate;
+    },
+    deleteCars(root, args) {
+      const deletedCars = filter(cars, ['personId', args.personId]);
+      remove(cars, ['personId', args.personId]);
+
+      return deletedCars;
     },
   },
 };

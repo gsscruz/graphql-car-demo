@@ -4,14 +4,14 @@ const typeDefs = gql`
   type Query {
     cars: [Car]
     people: [Person]
-    findCar(personId: String): [Car]
-    findPerson(id: String): [Person]
+    filterCars(personId: String): [Car]
+    filterPeople(id: String): [Person]
   }
 
   type Mutation {
-    addBuyer(id: String, firstName: String!, lastName: String!): Person
-    removeBuyer(id: String!): Person
-    updateBuyer(id: String!, firstName: String, lastName: String): Person
+    addPerson(id: String, firstName: String!, lastName: String!): Person
+    deletePerson(id: String!): Person
+    updatePerson(id: String!, firstName: String, lastName: String): Person
 
     addCar(
       personId: String!
@@ -22,7 +22,7 @@ const typeDefs = gql`
       price: Float!
     ): Car
 
-    removeCar(id: String!): Car
+    deleteCar(id: String!): Car
 
     updateCar(
       id: String!
@@ -32,6 +32,7 @@ const typeDefs = gql`
       model: String!
       price: Float!
     ): Car
+    deleteCars(personId: String!): [Car]
   }
   type Person {
     id: String!
