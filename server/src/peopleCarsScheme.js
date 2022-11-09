@@ -2,19 +2,19 @@ const people = [
   {
     id: '1',
     firstName: 'Bill',
-    lastName: 'Gates'
+    lastName: 'Gates',
   },
   {
     id: '2',
     firstName: 'Steve',
-    lastName: 'Jobs'
+    lastName: 'Jobs',
   },
   {
     id: '3',
     firstName: 'Linux',
-    lastName: 'Torvalds'
-  }
-]
+    lastName: 'Torvalds',
+  },
+];
 
 const cars = [
   {
@@ -23,7 +23,7 @@ const cars = [
     make: 'Toyota',
     model: 'Corolla',
     price: '40000',
-    personId: '1'
+    personId: '1',
   },
   {
     id: '2',
@@ -31,7 +31,7 @@ const cars = [
     make: 'Lexus',
     model: 'LX 600',
     price: '13000',
-    personId: '1'
+    personId: '1',
   },
   {
     id: '3',
@@ -39,7 +39,7 @@ const cars = [
     make: 'Honda',
     model: 'Civic',
     price: '20000',
-    personId: '1'
+    personId: '1',
   },
   {
     id: '4',
@@ -47,7 +47,7 @@ const cars = [
     make: 'Acura ',
     model: 'MDX',
     price: '60000',
-    personId: '2'
+    personId: '2',
   },
   {
     id: '5',
@@ -55,7 +55,7 @@ const cars = [
     make: 'Ford',
     model: 'Focus',
     price: '35000',
-    personId: '2'
+    personId: '2',
   },
   {
     id: '6',
@@ -63,7 +63,7 @@ const cars = [
     make: 'Honda',
     model: 'Pilot',
     price: '45000',
-    personId: '2'
+    personId: '2',
   },
   {
     id: '7',
@@ -71,7 +71,7 @@ const cars = [
     make: 'Volkswagen',
     model: 'Golf',
     price: '40000',
-    personId: '3'
+    personId: '3',
   },
   {
     id: '8',
@@ -79,7 +79,7 @@ const cars = [
     make: 'Kia',
     model: 'Sorento',
     price: '45000',
-    personId: '3'
+    personId: '3',
   },
   {
     id: '9',
@@ -87,6 +87,8 @@ const cars = [
     make: 'Volvo',
     model: 'XC40',
     price: '55000',
-    personId: '3'
-  }
-]
+    personId: '3',
+  },
+];
+
+export { people, cars };

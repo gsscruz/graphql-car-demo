@@ -1,49 +1,51 @@
 import { gql } from 'apollo-server-core';
+
 const typeDefs = gql`
   type Query {
-    cars: [Car!]!
-    people: [Person!]!
-    buyer(id: ID!): Person
+    cars: [Car]
+    people: [Person]
+    findCar(personId: String): [Car]
+    findPerson(id: String): [Person]
   }
 
   type Mutation {
-    addBuyer(firstName: String!, lastName: String!): [Person!]!
-    removeBuyer(id: ID!): [Person!]!
-    updateBuyer(id: ID!, firstName: String, lastName: String): [Person!]!
+    addBuyer(id: String, firstName: String!, lastName: String!): Person
+    removeBuyer(id: String!): Person
+    updateBuyer(id: String!, firstName: String, lastName: String): Person
 
     addCar(
       personId: String!
+      id: String!
       make: String!
       year: Int!
       model: String!
       price: Float!
-    ): [Person!]!
+    ): Car
 
-    removeCar(id: ID!): [Person!]!
+    removeCar(id: String!): Car
 
     updateCar(
-      id: ID!
+      id: String!
       personId: String!
       year: Int!
       make: String!
       model: String!
       price: Float!
-    ): [Person!]!
+    ): Car
   }
   type Person {
-    id: ID!
+    id: String!
     firstName: String!
     lastName: String!
-    carCollection: [Car]
   }
 
   type Car {
-    id: ID!
-    personId: String!
-    year: Int!
-    make: String!
-    model: String!
-    price: Float!
+    id: String!
+    personId: String
+    year: Int
+    make: String
+    model: String
+    price: Float
   }
 `;
 
